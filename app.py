@@ -32,7 +32,7 @@ if st.sidebar.checkbox('Show Map'):
         columns=['lat', 'lon'])
     st.map(map_data)
 
-if st.sidebar.checkbox('Show dataframe'):
+if st.sidebar.checkbox('Show Graph'):
     chart_data = pd.DataFrame(
         np.random.randn(20, 3),
         columns=['a', 'b', 'c'])
