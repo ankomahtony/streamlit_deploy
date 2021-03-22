@@ -4,7 +4,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-st.title('Deploying my first App')
+st.title('Updating my first Deploying my first App')
 
 # st.write("Here's our first attempt at using data to create a table:")
 # st.write(pd.DataFrame({
