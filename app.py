@@ -4,8 +4,12 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-st.title('Updating my first Deploying my first App')
+df_web = pd.read_html('https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/')
 
+
+
+st.title('Updating my first Deploying my first App')
+st.write(df_web)
 # st.write("Here's our first attempt at using data to create a table:")
 # st.write(pd.DataFrame({
 # 'first column': [1, 2, 3, 4],
