@@ -3,32 +3,41 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
+import extract
+from extract import *
+import matplotlib.pyplot as plt
+import squarify
 
-df_web = pd.read_html('https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/')
-
-
+html_url = "https://finance.yahoo.com/quote/BTC-USD/history?p=APPLE"
+load_data_csv(html_url)
+df_web = pd.read_csv('dataset.csv', thousands=',')
 
 st.title('Updating my first Deploying my first App')
 st.write(df_web)
-# st.write("Here's our first attempt at using data to create a table:")
-# st.write(pd.DataFrame({
-# 'first column': [1, 2, 3, 4],
-# 'second column': [10, 20, 30, 40]
-# }))
 
-# """
-# # My first app
-# Here's our first attempt at using data to create a table:
-# """
-df = pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
-})
-# df
 
 chart_data = pd.DataFrame(np.random.randn(20, 3), columns=['a', 'b', 'c'])
 
 # st.line_chart(chart_data)
+
+if st.checkbox('Show Chart'):
+    options = ['Open','High','Low','Close*','Adj Close**']
+    option = st.selectbox("Select Price to display chart",['All','Open','High','Low','Close*','Adj Close**'])
+    # df = df_web[['Price (Intraday)','Name']]
+    # df = df.dropna()
+    # prices = df["Price (Intraday)"]
+    # df['Price (Intraday)'] = prices.apply(np.ceil)
+    # prices = prices.apply(atof)
+    # fig, ax = plt.subplots(figsize=(7,5))
+    # ax=squarify.plot(sizes=df['Price (Intraday)'],label=df['Name'])
+    # # plt.axis('off')
+    # st.pyplot(fig)
+    # st.write(df)
+    if(option=='All'):
+        st.line_chart(df_web[options])
+    else:
+        st.line_chart(df_web[option])
+
 
 if st.sidebar.checkbox('Show Map'):
     map_data = pd.DataFrame(
@@ -36,14 +45,6 @@ if st.sidebar.checkbox('Show Map'):
         columns=['lat', 'lon'])
     st.map(map_data)
 
-if st.sidebar.checkbox('Show Graph'):
-    chart_data = pd.DataFrame(
-        np.random.randn(20, 3),
-        columns=['a', 'b', 'c'])
-    st.line_chart(chart_data)
-
-option = st.sidebar.selectbox('Which number do you like best?', df['second column'])
-st.write('You selected: ', option)
 
 left_column, right_column = st.beta_columns(2)
 pressed = left_column.button('Press me?')
