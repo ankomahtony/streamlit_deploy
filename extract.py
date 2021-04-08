@@ -15,8 +15,7 @@ def remove_html_space(text):
     import re
     clean = re.compile('  ')
     return re.sub(clean, '', text)
-
-@st.cache
+# 
 def load_data_csv(html):
     html = urlopen(html)
     html = html.read().decode("utf-8")
