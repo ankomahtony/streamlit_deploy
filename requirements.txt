@@ -1,7 +1,7 @@
-streamlit==0.78.0
+docxtpl==0.10.0
 squarify==0.4.3
+streamlit==0.78.0
+numpy==1.17.2
 matplotlib==3.1.1
 pandas==0.25.1
-numpy==1.17.2
-docxtpl==0.10.0
 beautifulsoup4==4.9.3
